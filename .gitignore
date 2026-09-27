@@ -1,1 +1,5 @@
-**/.ipynb_checkpoints/
+# Downloaded Tranco snapshots
+/datasets/tranco/raw/
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
