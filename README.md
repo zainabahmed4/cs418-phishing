@@ -23,3 +23,23 @@ This dataset contains website characteristics that can be used to distinguish ph
 - **Data source/coverage:** The dataset was collected mainly from the PhishTank archive, MillerSmiles archive, and Google search operators
 - **Time coverage:** A specific observation-level time span is not provided by UCI. The dataset was created around 2012 and donated to UCI in 2015
 - **Geographic coverage:** No specific geographic area is given; the dataset consists of websites collected from online sources rather than observations from a particular city or country
+
+### Secondary Dataset #2: Tranco Top Sites
+
+**Source:** Tranco
+
+[https://tranco-list.eu/](https://tranco-list.eu/)
+
+This dataset ranks popular website domains. We will use it as a comparison dataset to see how the structure of popular domains differs from phishing URLs.
+
+- **Rows:** 1,000,000
+- **Columns:** 2 original columns and 6 total after adding 4 domain structure features
+- **What one row represents:** One domain and its popularity rank in the Tranco snapshot
+- **Feature types:** `rank` and the two count features are integers, `domain` is a string, and the hyphen and number features are booleans
+- **Missing values:** None. There are also no duplicate domains.
+- **Columns of interest:** `rank`, `domain`, `domain_length`, `number_of_dots`, `contains_hyphen`, and `contains_number`
+- **Data source/coverage:** The standard Tranco list contains pay-level domains rather than full URLs or subdomains
+- **Time coverage:** The Y8YJG snapshot was generated on September 26, 2026, using rankings from August 28 to September 26, 2026. We downloaded it on September 27, 2026.
+- **Geographic coverage:** The domains are not limited to a specific country. The dataset does not include a country column, so geographic representation cannot be measured directly.
+
+We will compare these popular domains with phishing URLs from PhiUSIIL and PhishTank. This will help us see whether features such as domain length, dot count, hyphens, and numbers differ between popular and phishing domains.
