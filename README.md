@@ -3,8 +3,25 @@
 ### Which features of phishing links and webpages make them harder for people to recognize?
 
 
-
 ## Dataset Notes:
+
+### Primary Dataset #1:
+
+**Source** UCI Machine Learning Repository
+https://archive.ics.uci.edu/dataset/967/phiusiil+phishing+url+dataset
+
+This dataset contains URL and webpage characteristics for legitimate and phishing websites. We will use it as our main dataset to examine which URL, domain, security, and webpage features are associated with phishing.
+
+- **Rows:** 235795
+- **Columns:** 56
+- **What one row represents:** Each row is a URL and it's corresponding webpage. Whether that's a legitimate URL or a phising URL.
+- **Feature types:** Primarily numerical and binary features, with some categorical/text fields. Features cover URL structure, domain information, character patterns, security properties, and webpage characteristics.
+- **Missing values:** None
+- **Columns of interest:** `URLLength`, `DomainLength`, `IsDomainIP`, `NoOfSubDomain`, `HasObfuscation`, `ObfuscationRatio`, `DegitRatioInURL`, `SpacialCharRatioInURL`, `IsHTTPS`, `URLSimilarityIndex`, `TLDLegitimateProb`, `DomainTitleMatchScore`, `URLTitleMatchScore`, `HasFavicon`, `HasCopyrightInfo`, `HasSocialNet`, `HasPasswordField`, `HasSubmitButton`, and `label`
+- **Class counts:** Label = 1 means legitimate URL and label = 0 means phishing URL
+- **Data source/coverage:** Legitimate URLs were collected from the Open PageRank Initiative, while phishing URLs were collected from PhishTank, OpenPhish, and MalwareWorld.
+- **Time coverage:** UCI only says that most URLs used to construct the dataset were recent/latest URLs at the time, and lists the dataset as created in 2024.
+- **Geographic coverage:** Not specified. There is no location/country variable in UCI's listed features either. And no context is provided in the research paper either. 
 
 ### Primary Dataset #2: Phishing Websites
 
@@ -41,6 +58,7 @@ This dataset will be compared against our primary phishing datasets to examine w
 - **Data source/coverage:** The phishing websites were collected from the PhishTank archive, while legitimate websites were collected from Yahoo and Starting Point directories.
 - **Time coverage:** A specific observation-level time span is not provided by UCI. The associated research paper was published in 2014, and the dataset was donated to UCI in 2016.
 - **Geographic coverage:** No specific geographic area is given; the dataset consists of websites collected from online sources rather than observations from a particular city or country.
+
 ### Secondary Dataset #2: Tranco Top Sites
 
 **Source:** Tranco
@@ -60,3 +78,5 @@ This dataset ranks popular website domains. We will use it as a comparison datas
 - **Geographic coverage:** The domains are not limited to a specific country. The dataset does not include a country column, so geographic representation cannot be measured directly.
 
 We will compare these popular domains with phishing URLs from PhiUSIIL and PhishTank. This will help us see whether features such as domain length, dot count, hyphens, and numbers differ between popular and phishing domains.
+
+Group members: Srijani Prekki, Catherine Carter, Zainab Ahmed, Mehtab Kaur
