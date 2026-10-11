@@ -79,4 +79,44 @@ This dataset ranks popular website domains. We will use it as a comparison datas
 
 We will compare these popular domains with phishing URLs from PhiUSIIL and PhishTank. This will help us see whether features such as domain length, dot count, hyphens, and numbers differ between popular and phishing domains.
 
+## Exploratory Analysis
+
+For this checkpoint, we explored the datasets to get a better idea of what the features look like and how they relate to phishing classification. Most of our analysis focused on the PhiUSIIL dataset and the Website Phishing dataset.
+
+### Revised Research Question
+
+Our original question was:
+
+**Which features of phishing links and webpages make them harder for people to recognize?**
+
+After looking more closely at the data, we realized that the datasets do not actually measure whether a person was fooled by a phishing website. Because of that, we revised our question to:
+
+**Which URL and webpage characteristics are associated with phishing classification, and are these patterns consistent across different phishing datasets?**
+
+### Anomalies We Found
+
+| Dataset | Anomaly | Rows affected | What we did |
+|---|---|---:|---|
+| PhiUSIIL | Repeated URLs | 850 rows across 425 URLs | Kept and flagged because the rows were not exact duplicates and had matching labels |
+| PhiUSIIL | Stored URL length did not match the URL text | 187,151 | Kept and flagged because most differences were only one character |
+| PhiUSIIL | HTTPS feature did not match the URL scheme | 493 | Kept and flagged for further review |
+| PhiUSIIL | Very long URLs | 2,350 above the 99th percentile | Kept because long URLs can still be valid |
+| Website Phishing | Duplicate feature/classification combinations | 629 | Kept because the dataset does not include unique website IDs, so we cannot confirm they are duplicate websites |
+| Website Phishing | Columns originally loaded as strings | 1,353 | Converted the encoded feature values to integers |
+| Both datasets | Missing values | 0 | No action needed |
+
+### Main Findings
+
+A few patterns stood out during the exploratory analysis:
+
+- Phishing URLs in PhiUSIIL were generally longer than legitimate URLs. The median phishing URL length was 34 characters compared with 26 for legitimate URLs.
+- Phishing URLs also tended to have a higher special-character ratio. This difference was still visible after splitting URLs into short, medium, and long groups.
+- The IP address feature had a higher phishing rate in both datasets. However, IP-based domains were very rare in PhiUSIIL, so this feature would not identify most phishing websites by itself.
+- HTTPS was common among legitimate websites, but almost half of the phishing rows in PhiUSIIL also used HTTPS. This shows that HTTPS alone is not enough to decide whether a website is legitimate.
+- The two datasets showed some similar patterns, but they do not always measure features in exactly the same way, so the results should be compared carefully.
+
+Overall, the EDA suggests that combinations of URL and webpage features may be more useful than relying on one feature by itself. Our next steps are to continue comparing features across datasets and focus on patterns that appear consistently.
+
+
+
 Group members: Srijani Prekki, Catherine Carter, Zainab Ahmed, Mehtab Kaur
