@@ -81,7 +81,7 @@ We will compare these popular domains with phishing URLs from PhiUSIIL and Phish
 
 ## Exploratory Analysis
 
-For this checkpoint, we explored the datasets to get a better idea of what the features look like and how they relate to phishing classification. Most of our analysis focused on the PhiUSIIL dataset and the Website Phishing dataset.
+For this checkpoint, we explored the datasets to get a better idea of what the features look like and how they relate to phishing classification. Most of our analysis focused on the PhiUSIIL dataset, the Website Phishing dataset, and the Phishing Website dataset.
 
 ### Revised Research Question
 
@@ -104,6 +104,7 @@ After looking more closely at the data, we realized that the datasets do not act
 | Website Phishing | Duplicate feature/classification combinations | 629 | Kept because the dataset does not include unique website IDs, so we cannot confirm they are duplicate websites |
 | Website Phishing | Columns originally loaded as strings | 1,353 | Converted the encoded feature values to integers |
 | Both datasets | Missing values | 0 | No action needed |
+| Phishing Websites | NA | 0 | No action needed |
 
 ### Main Findings
 
@@ -114,6 +115,10 @@ A few patterns stood out during the exploratory analysis:
 - The IP address feature had a higher phishing rate in both datasets. However, IP-based domains were very rare in PhiUSIIL, so this feature would not identify most phishing websites by itself.
 - HTTPS was common among legitimate websites, but almost half of the phishing rows in PhiUSIIL also used HTTPS. This shows that HTTPS alone is not enough to decide whether a website is legitimate.
 - The two datasets showed some similar patterns, but they do not always measure features in exactly the same way, so the results should be compared carefully.
+- In the Website Phishing primary dataset, 736 phishing websites had URL lengths categorized as legitimate. This shows that phishing websites don't necessarily have suspicious-looking URL lengths.
+- When looking at subdomains, 810 phishing websites had subdomain characteristics categorized as legitimate. This suggests that some phishing websites have normal-looking domain structures.
+- SSL characteristics also stood out, with 701 phishing websites having SSL characteristics categorized as legitimate. This shows that phishing websites can still have security-related characteristics typically associated with legitimate websites.
+- When comparing SSL characteristics between the Website Phishing primary and secondary datasets, the legitimate-associated category (1) was the most common in both, accounting for 57.27% and 55.51% of websites, respectively. However, these percentages include both phishing and legitimate websites.
 
 Overall, the EDA suggests that combinations of URL and webpage features may be more useful than relying on one feature by itself. Our next steps are to continue comparing features across datasets and focus on patterns that appear consistently.
 
