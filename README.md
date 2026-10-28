@@ -1,6 +1,6 @@
 # CS 418 Research Project
 
-### Which features of phishing links and webpages make them harder for people to recognize?
+### Which URL and webpage features are shared by both phishing and legitimate websites, potentially making them harder to distinguish?
 
 
 ## Dataset Notes:
