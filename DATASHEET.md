@@ -281,4 +281,3 @@ However, people can still be indirectly represented or affected by how these dat
 - **Responsibility:** We have a responsibility to accurately interpret our findings and acknowledge the limitations of our datasets. Since the data does not measure human recognition, we should avoid claiming that certain features directly cause people to fall for phishing attempts.
 
 - **Ethics:** We should consider the potential consequences of our findings, including the possibility of legitimate websites being incorrectly identified as phishing websites. We should also avoid sharing potentially harmful phishing links unnecessarily and be careful not to present our results as applicable to all websites or users.
-
