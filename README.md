@@ -12,7 +12,7 @@ See [DATASHEET.md](DATASHEET.md) for our codebooks, reproduction steps, and acce
 | Primary | PhiUSIIL Phishing URL (UCI 967) | [UCI 967](https://archive.ics.uci.edu/dataset/967/phiusiil+phishing+url+dataset) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
 | Primary | Phishing Websites (UCI 327) | [UCI 327](https://archive.ics.uci.edu/dataset/327/phishing) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
 | Secondary | Website Phishing (UCI 379) | [UCI 379](https://archive.ics.uci.edu/dataset/379/website+phishing) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
-| Secondary | Tranco Top Sites | [Tranco](https://tranco-list.eu/), [snapshot Y8YJG](https://tranco-list.eu/list/Y8YJG) | Redistribution license for this snapshot is unverified. The publisher lists upstream CC BY 3.0, CC BY-SA 4.0, and CC BY-NC 4.0 terms. Confirm the snapshot's terms before sharing the ranking. |
+| Secondary | Tranco Top Sites | [Tranco](https://tranco-list.eu/), [snapshot Y8YJG](https://tranco-list.eu/list/Y8YJG) | Majestic: CC BY 3.0<br>Chrome User Experience Report (CrUX): CC BY-SA 4.0<br>Cloudflare Radar: CC BY-NC 4.0<br><br>Upstream licenses; combined Tranco redistribution terms unverified. |
 
 For the UCI datasets, reuse requires credit to the original creators, links to the source and license, and a description of any changes. PhishTank is an original collection source for the phishing datasets, not a separate dataset loaded by our notebooks.
 
