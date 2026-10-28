@@ -179,7 +179,29 @@ The dataset is hosted by the UCI Machine Learning Repository and was donated on 
 
 # 2. Scope
 
+### Dataset 1: PhiUSIIL Phishing URL Dataset (UCI 967)
 
+- **Target Population:** All phishing and legitimate websites that people may encounter online, particularly those that share similar URL and webpage features.
+- **Access Frame:** The phishing and legitimate websites available through the sources used by the researchers who constructed the PhiUSIIL dataset. The exact boundaries of this access frame are not fully established by the dataset alone.
+- **Sample:** 235,795 website records, including 100,945 phishing websites and 134,850 legitimate websites. The dataset contains 56 columns, including URL length, HTTPS usage, domain characteristics, redirects, and webpage features.
+
+### Dataset 2: Phishing Websites Dataset (UCI 327)
+
+- **Target Population:** All phishing and legitimate websites that people may encounter online, particularly those that share URL and webpage characteristics that could make them difficult to distinguish.
+- **Access Frame:** The phishing and legitimate websites available through the original researchers' data collection sources and feature extraction methods. The complete set of websites eligible for collection is not fully documented.
+- **Sample:** 11,055 website records, including 4,898 phishing websites and 6,157 legitimate websites. The dataset contains 30 features and one classification column, including URL length, subdomains, SSL certificate status, redirects, and other webpage characteristics.
+
+### Limitations of Our Data
+
+Our datasets only represent a portion of the phishing and legitimate websites that exist online, so our findings may not apply to every website. Since the datasets were collected from specific sources rather than randomly sampling all websites, they may not accurately represent the types of websites people commonly encounter.
+
+Another limitation is the year the data was collected. Phishing techniques change and advance over time, and older datasets may not reflect newer methods used to make phishing websites appear legitimate.
+
+The two datasets also contain different features and use different methods to measure them. For example, the PhiUSIIL dataset records URL length as a numerical value, while the Phishing Websites dataset categorizes URL length into predefined values. This makes direct comparisons between the datasets more challenging.
+
+Also, some features, such as domain registration information and webpage source code characteristics, are not directly visible to everyday users. This limits our ability to determine which shared features might make a phishing website appear legitimate to someone just casually browsing the internet.
+
+Finally, although we can identify URL and webpage features shared by phishing and legitimate websites, our datasets do not measure how well people can recognize phishing attempts. So we can't directly conclude whether these shared features actually make websites harder for people to distinguish.
 
 ---
 
@@ -244,3 +266,18 @@ The table below documents the PhiUSIIL columns that we used in our exploratory a
 
 # 6. People and Potential Impact
 
+### People Represented or Affected by the Data
+
+Our primary two datasets contain information about phishing and legitimate websites rather than individual people. They include URL and webpage characteristics, such as URL length, HTTPS usage, domain information, and redirects. Neither measures people's demographics. 
+
+However, people can still be indirectly represented or affected by how these datasets are used. For example, people who browse websites in different languages, regions, or online environments may encounter different types of phishing attempts. Since our datasets do not include demographic information, we can't determine whether certain groups are represented or whether our findings apply equally to everyone.
+
+### Applying the CARE Principles
+
+- **Collective Benefit:** Our research could benefit internet users by identifying URL and webpage features that phishing websites share with legitimate websites. These findings could bring more awareness to phising and which methods are harder to distinguish. 
+
+- **Authority to Control:** Although our datasets are publicly available, the individuals and website owners associated with the URLs may not have had direct control over how their website information was collected or reused. We should be mindful of how we use and share this information.
+
+- **Responsibility:** We have a responsibility to accurately interpret our findings and acknowledge the limitations of our datasets. Since the data does not measure human recognition, we should avoid claiming that certain features directly cause people to fall for phishing attempts.
+
+- **Ethics:** We should consider the potential consequences of our findings, including the possibility of legitimate websites being incorrectly identified as phishing websites. We should also avoid sharing potentially harmful phishing links unnecessarily and be careful not to present our results as applicable to all websites or users.
