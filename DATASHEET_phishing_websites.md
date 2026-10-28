@@ -8,7 +8,7 @@
 
 The Phishing Websites dataset was created to help researchers identify which website characteristics are useful for identifying phishing websites from legit websites. The researchers explained that reliable training datasets for phishing detection were difficult to find, so they wanted to provide a dataset containing important phishing-related features and introduce additional features that could improve phishing detection.
 
-The dataset was created by Rami Mohammad and Lee McCluskey.
+UCI credits Rami Mohammad and Lee McCluskey. The linked Huddersfield record also credits Fadi Thabtah.
 
 **Funding:** Not documented by the publisher.
 

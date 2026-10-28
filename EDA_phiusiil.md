@@ -105,7 +105,9 @@ Password fields and external form submission were actually more common in legiti
 
 **Original research question:** Which features of phishing links and webpages make them harder for people to recognize?
 
-This dataset can show differences between phishing and legitimate websites, but it does not include information about how people respond to them. A question we can answer more directly is:
+**Current group research question:** Which URL and webpage features are shared by both phishing and legitimate websites, potentially making them harder to distinguish?
+
+This dataset can show differences between phishing and legitimate websites, but it does not include information about how people respond to them. Within the group question, this PhiUSIIL analysis asks:
 
 **Which URL and webpage features differ between phishing and legitimate examples, especially when phishing examples also have HTTPS or ordinary-looking URL structures?**
 

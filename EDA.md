@@ -1,5 +1,7 @@
 # Exploratory Data Analysis
 
+**Current group research question:** Which URL and webpage features are shared by both phishing and legitimate websites, potentially making them harder to distinguish?
+
 **Original research question:** Which features of phishing links and webpages make them harder for people to recognize?
 
 ## 1. Profile each dataset
@@ -12,9 +14,9 @@ One thing that stood out from `df.null_count()` is that **none of the 56 columns
 
 **Notebook:** [eda_phiusiil.ipynb](./notebooks/eda_phiusiil.ipynb), dataset profiling section.
 
-### Website Phishing primary dataset
+### Phishing Websites primary dataset
 
-The Website Phishing ARFF dataset has **11,055 rows and 31 columns** (`df.shape == (11055, 31)`). Thirty columns describe website characteristics, and the last column, `Result`, tells us whether the website is phishing (`-1`) or legitimate (`1`). The feature values are categories, usually `-1`, `0`, or `1`, rather than actual measurements. After converting the columns, `df.glimpse()` shows them as `i64`. I also kept the original feature names even though some have spelling mistakes, such as `Domain_registeration_length`.
+The Phishing Websites ARFF dataset has **11,055 rows and 31 columns** (`df.shape == (11055, 31)`). Thirty columns describe website characteristics, and the last column, `Result`, tells us whether the website is phishing (`-1`) or legitimate (`1`). The feature values are categories, usually `-1`, `0`, or `1`, rather than actual measurements. After converting the columns, `df.glimpse()` shows them as `i64`. The EDA renames `Shortining_Service` to `Shortening_Service` and `Domain_registeration_length` to `Domain_registration_length`; the exploration notebook keeps the source names.
 
 There are **no missing values** according to `df.null_count()`. Since the features use categorical codes, the means and standard deviations from `df.describe()` aren't very useful for interpreting them. What's more useful is counting how often each category appears. There are **6,157 legitimate websites** and **4,898 phishing websites**. Another thing I noticed is that `Redirect` only uses 0 and 1. From the distribution graphs, `URL_Length` has 8,960 rows in the -1 category, `Prefix_Suffix` has 9,590 in -1, `having_At_Symbol` has 9,400 in 1, and `SSLfinal_State` has 6,331 in 1.
 
@@ -24,7 +26,7 @@ There are **no missing values** according to `df.null_count()`. Since the featur
 
 Our secondary dataset is smaller, with **1,353 rows and 10 columns** (`df.shape == (1353, 10)`). Nine columns describe website features: `SFH`, `popUpWidnow`, `SSLfinal_State`, `Request_URL`, `URL_of_Anchor`, `web_traffic`, `URL_Length`, `age_of_domain`, and `having_IP_Address`. The tenth column is `Result`. The values originally loaded as strings, so they had to be converted to integers before we could analyze them.
 
-There are **no missing values** according to `df.isnull().sum()`. Unlike the primary Website Phishing dataset, this one has three result categories: **702 phishing, 548 legitimate, and 103 suspicious**. Some features allow -1, 0, and 1, while `age_of_domain` and `having_IP_Address` use two values. The suspicious class is much smaller than the other two, which is something to keep in mind when comparing percentages.
+There are **no missing values** according to `df.isnull().sum()`. Unlike the primary Phishing Websites dataset, this one has three result categories: **702 phishing, 548 legitimate, and 103 suspicious**. Some features allow -1, 0, and 1, while `age_of_domain` and `having_IP_Address` use two values. The suspicious class is much smaller than the other two, which is something to keep in mind when comparing percentages.
 
 **Notebook:** [eda_secondary.ipynb](./notebooks/eda_secondary.ipynb), dataset profile section.
 
@@ -48,9 +50,9 @@ The checks in [eda_phiusiil.ipynb](./notebooks/eda_phiusiil.ipynb) didn't find a
 
 There were also **no completely identical rows**. Two URLs have uppercase characters, but since capitalization can matter in URL paths, we didn't change them. We also checked what happened when keeping only the first occurrence of repeated URLs, and the percentages were almost unchanged, so we kept the original rows.
 
-### Website Phishing primary dataset
+### Phishing Websites primary dataset
 
-The values originally loaded as strings, even though they represent integers, so they were converted to `Int64`. There are **no missing values**, and the feature values are within the expected -1, 0, and 1 categories. `Redirect` only uses 0 and 1, but that isn't something we need to fix. We kept the column names as they were in the original file and didn't remove any rows.
+The values originally loaded as strings, even though they represent integers, so they were converted to `Int64`. There are **no missing values**, and the feature values are within the expected -1, 0, and 1 categories. `Redirect` only uses 0 and 1, but that isn't something we need to fix. We corrected the two column spellings listed above and did not remove any rows. The final data check found 5,206 repeated feature/classification rows, which we kept because no website IDs are provided.
 
 ### UCI secondary dataset
 
@@ -66,7 +68,7 @@ These graphs show how often a feature value appears, but **they don't tell us wh
 
 **Notebook:** [eda_phiusiil.ipynb](./notebooks/eda_phiusiil.ipynb), feature distributions.
 
-### Website Phishing primary dataset
+### Phishing Websites primary dataset
 
 The distributions for `URL_Length`, `having_At_Symbol`, `Prefix_Suffix`, `SSLfinal_State`, and `HTTPS_token` are pretty unbalanced, with one category appearing much more frequently than the others. `having_Sub_Domain` is a little different: 3,363 websites have a value of -1, 3,622 have 0, and 4,070 have 1. Those three categories are much closer together. Since these numbers are categories, rather than actual measurements, describing numerical skew or outliers wouldn't really make sense here.
 
@@ -92,7 +94,7 @@ In PhiUSIIL, phishing websites have a median URL length of **34** characters (mi
 
 ### Plot 2 – Subdomains and IP Address Features vs. Result
 
-In PhiUSIIL, having one recorded subdomain is common for both phishing and legitimate websites, but it appears in **63.0% of phishing** websites compared to **85.2% of legitimate** websites. Having three or more subdomains is less common, appearing in 5.3% of phishing websites and 1.3% of legitimate ones. Something that surprised me is that all **13,983** websites recorded as having zero subdomains were phishing. That could be related to how the dataset counts subdomains, so it's worth checking before drawing a conclusion. In the secondary dataset, websites with an IP-address feature value of 1 have a phishing rate of about **59%**, compared to about **51%** for value 0. The cross-dataset analysis found that, in PhiUSIIL, all **638** rows with `IsDomainIP = 1` were phishing, while the Website Phishing primary dataset had a smaller difference of around 65% versus 55%.
+In PhiUSIIL, having one recorded subdomain is common for both phishing and legitimate websites, but it appears in **63.0% of phishing** websites compared to **85.2% of legitimate** websites. Having three or more subdomains is less common, appearing in 5.3% of phishing websites and 1.3% of legitimate ones. Something that surprised me is that all **13,983** websites recorded as having zero subdomains were phishing. That could be related to how the dataset counts subdomains, so it's worth checking before drawing a conclusion. In the secondary dataset, websites with an IP-address feature value of 1 have a phishing rate of about **59%**, compared to about **51%** for value 0. The cross-dataset analysis found that, in PhiUSIIL, all **638** rows with `IsDomainIP = 1` were phishing, while the Website Phishing secondary dataset had a smaller difference of around 65% versus 55% after excluding the 103 suspicious rows.
 
 **So what?** I expected unusual domain structures or IP-based URLs to be related to phishing, and some of the results support that. What I didn't expect was for every website in the zero-subdomain group to be phishing, or for every IP-based domain in PhiUSIIL to be phishing. However, these patterns depend on how the features were defined and how many websites were in each group. The IP-based group is also quite small compared to the full dataset, so we shouldn't treat it as something that identifies most phishing websites.
 
@@ -102,7 +104,7 @@ In PhiUSIIL, having one recorded subdomain is common for both phishing and legit
 
 ### Plot 3 – SSL/HTTPS and Webpage Features vs. Result
 
-In the Website Phishing primary dataset, **98.20%** of websites with `SSLfinal_State = 0` were phishing, compared to **85.77%** for -1 and **11.07%** for 1. What's interesting is that **701 phishing websites still had an SSL value of 1**, which is the category associated with legitimate websites. Comparing the primary and secondary datasets, category 1 was the most common in both. However, the secondary dataset had more websites in category 0 (**21.73% versus 10.56%**), while the primary had more in -1 (**32.18% versus 22.76%**). In PhiUSIIL, **49.22% of phishing** websites used HTTPS, compared to **100% of legitimate** websites. Obfuscation and IP-based domains only appeared among phishing websites in that dataset, but they were rare. Something I didn't expect was that password fields and external form submission were actually more common among legitimate websites (**13.85% vs. 5.39%**, and **7.37% vs. 0.43%**). Redirect rates were fairly close (**15.17% vs. 11.98%**).
+In the Phishing Websites primary dataset, **98.20%** of websites with `SSLfinal_State = 0` were phishing, compared to **85.77%** for -1 and **11.07%** for 1. What's interesting is that **701 phishing websites still had an SSL value of 1**, which is the category associated with legitimate websites. Comparing the primary and secondary datasets, category 1 was the most common in both. However, the secondary dataset had more websites in category 0 (**21.73% versus 10.56%**), while the primary had more in -1 (**32.18% versus 22.76%**). In PhiUSIIL, **49.22% of phishing** websites used HTTPS, compared to **100% of legitimate** websites. Obfuscation and IP-based domains only appeared among phishing websites in that dataset, but they were rare. Something I didn't expect was that password fields and external form submission were actually more common among legitimate websites (**13.85% vs. 5.39%**, and **7.37% vs. 0.43%**). Redirect rates were fairly close (**15.17% vs. 11.98%**).
 
 **So what?** This is important for our research question because a phishing website can still have HTTPS or SSL features associated with legitimate sites. A security-related feature by itself doesn't prove a website is safe. I also thought forms would show up more often on phishing websites, so seeing more of them among legitimate websites was unexpected. It shows why we shouldn't assume one website characteristic always points to phishing.
 
@@ -128,7 +130,7 @@ What stood out to me most is that **phishing and legitimate websites share a lot
 
 This also made me rethink our original research question. We originally asked which features make phishing links and webpages harder for people to recognize, but our datasets don't actually measure whether people can recognize phishing websites. They only tell us about website characteristics and classifications. I don't think we need to change the direction of our project, but I do think our wording should be more specific to what we're measuring.
 
-**Revised research question:** Which URL and webpage features are shared by phishing and legitimate websites, potentially making them harder to distinguish?
+**Revised research question:** Which URL and webpage features are shared by both phishing and legitimate websites, potentially making them harder to distinguish?
 
 ## 6. Overall – What's next?
 
@@ -141,4 +143,4 @@ Based on what we found, here's what I think we should look at next:
 5. **Ask someone familiar with phishing detection about some of the unusual findings.** In particular, I'd want to understand why the form and webpage-related features behave differently than expected and whether that comes from the way the data was collected.
 6. **Keep the human-recognition question separate.** If we eventually want to know whether these characteristics really fool people, we'd need data from a user study or an experiment. Our current datasets can't tell us that.
 
-Overall, I think our revised research question fits what we're actually doing much better: **Which URL and webpage features are shared by phishing and legitimate websites, potentially making them harder to distinguish?** The main reason for changing it is that our data measures website characteristics, not people's ability to recognize phishing. And so far, our results show that phishing websites can have several features we'd normally associate with legitimate ones.
+Overall, I think our revised research question fits what we're actually doing much better: **Which URL and webpage features are shared by both phishing and legitimate websites, potentially making them harder to distinguish?** The main reason for changing it is that our data measures website characteristics, not people's ability to recognize phishing. And so far, our results show that phishing websites can have several features we'd normally associate with legitimate ones.

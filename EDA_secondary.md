@@ -94,9 +94,9 @@ The secondary dataset also showed variation in phishing classification rates acr
 
 Which features of phishing links and webpages make them harder for people to recognize?
 
-**Proposed revised research question:**
+**Current group research question:**
 
-Which URL and webpage characteristics are associated with phishing classification, and do these relationships remain consistent across different phishing datasets?
+Which URL and webpage features are shared by both phishing and legitimate websites, potentially making them harder to distinguish?
 
 The revised question focuses on patterns that can actually be measured using the available data. The datasets contain phishing-related website characteristics, but they do not directly measure whether people can recognize phishing websites.
 
