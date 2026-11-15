@@ -1,3 +1,34 @@
+## Main Findings (Narrative Analysis)
+
+- In PhiUSIIL, 48.74% of phishing URLs used HTTPS, as did every legitimate URL in the sample.
+- Among HTTPS URLs in PhiUSIIL, 10.64% of phishing URLs were at or below the legitimate median length of 27 characters.
+- Password fields were less common on phishing pages across all HTTPS pages in PhiUSIIL, but more common on phishing pages in each page-size group that included both labels.
+
+### Nearly half of phishing URLs use HTTPS
+
+Comparing the URL scheme within each label, 49,196 of 100,945 phishing rows started with HTTPS (48.74%, 95% CI 47.17–50.30%), as did all 134,850 legitimate rows. A stored HTTPS flag could overcount phishing URLs if it disagreed with the URL text. Using the stored flag gave 49.22% for phishing rows, and keeping one row per exact URL gave 48.63% from the URL text, so the overlap persisted under both checks. An HTTPS-only rule that treated those URLs as legitimate would miss roughly half the phishing rows in this sample. The legitimate URLs came from a different collection source, so their 100% HTTPS rate describes this sample. The URL scheme also captures how the link was written, with no independent check of its certificate or connection.
+
+![Nearly half of phishing URLs use HTTPS](figures/https-overlap.png)
+
+### Some phishing URLs are both HTTPS and short
+
+Within the HTTPS subset, we counted the share of each label at or below the legitimate median of 27 characters, measured directly from the URL text. By this definition, 5,232 of 49,196 phishing rows were short (10.64%, 95% CI 9.75–11.52%), compared with 55.48% of legitimate rows (95% CI 55.21–55.74%). URLs tied at the median count as short, which puts slightly more than half the legitimate rows in that group. Because the stored length can differ from the text, we repeated the comparison using each URL’s stored length and its corresponding legitimate median of 26 characters. The phishing share was still 9.17% (95% CI 8.35–9.99%). Short URLs were more common among legitimate rows, yet roughly one in ten phishing rows with HTTPS shared both cues. The cutoff describes this dataset, and the result depends on how short is defined.
+
+![Some phishing URLs are both HTTPS and short](figures/short-https-urls.png)
+
+### The password-field pattern reverses within page-size groups
+
+In the HTTPS subset, 8.21% of phishing pages and 13.85% of legitimate pages had a recorded password field, a phishing-minus-legitimate gap of −5.64 percentage points (95% CI −6.75 to −4.53). Since larger pages may have more opportunities to include a form, we compared rates within broad groups based on lines of code. Among pages with 100–999 lines, password fields were more common on phishing pages (16.90% versus 5.89%, a gap of +11.01 points, 95% CI +8.22 to +13.81). The direction was the same at 1,000 or more lines (58.95% versus 20.50%), with wider uncertainty around the gap (+38.46 points, 95% CI +28.77 to +48.15) and only 229 phishing rows in that group. The group below 100 lines had 29,610 phishing rows and zero legitimate rows, so it offers no within-group comparison. The reversal shows how differences in the kinds of pages collected can change the overall comparison. These broad groups still leave room for differences in what the pages were designed to do or how their features were extracted.
+
+![The password-field pattern reverses within page-size groups](figures/password-field-by-page-size.png)
+
+#### Reproducing the evidence
+
+Run [`python narrative.py`](narrative.py) from the repository root with pandas, NumPy, and Matplotlib installed. It reads the checked-in PhiUSIIL CSV, prints the counts, percentages, intervals, and checks, and regenerates the three figures. The approximate 95% intervals group rows by recorded domain to account for dependence among URLs from the same domain. The length intervals treat the observed thresholds as fixed. The intervals describe statistical precision under those assumptions. Collection differences between labels still limit generalization, and the data contain no measure of whether a person would recognize or trust a page.
+
+The [exploratory analysis](EDA.md) also examined IP-based domains, special-character ratios, and SSL categories in the comparison datasets. We left IP-based domains out of the main story because they were rare in PhiUSIIL and chose length as the more direct example of URL overlap. The other datasets’ SSL categories also include certificate characteristics, so we left them out of the comparison of literal HTTPS schemes.
+
+
 # CS 418 Research Project
 
 ### Which URL and webpage features are shared by both phishing and legitimate websites, potentially making them harder to distinguish?
