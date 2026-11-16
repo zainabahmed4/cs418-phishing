@@ -1,3 +1,15 @@
+## Main Findings (Narrative Analysis)
+
+- In the UCI Phishing Websites dataset, 14.31% of phishing sites and 91.44% of legitimate sites fell into SSL category `1`.
+
+### Some phishing sites share the SSL category common among legitimate sites
+
+We compared the share of sites in SSL category `1` within each website label. In this dataset, 701 of 4,898 phishing sites (14.31%) and 5,630 of 6,157 legitimate sites (91.44%) fell into that category. To check whether differences in URL length could explain the overall gap, we repeated the comparison within each of the three URL-length categories. The gap persisted in every category, with rates ranging from 12.36% to 16.87% for phishing sites and from 90.60% to 100% for legitimate sites. The 100% rate came from a group of only 52 legitimate sites, so it should be interpreted with caution. SSL category `1` was much more common among legitimate sites, yet some phishing sites shared it across all three URL-length categories.
+
+![Share of phishing and legitimate sites in SSL category 1, overall and by URL-length category](figures/uci327-ssl-by-url-length.png)
+
+[See the analysis code in narrative.ipynb](notebooks/narrative.ipynb)
+
 # CS 418 Research Project
 
 ### Which URL and webpage features are shared by both phishing and legitimate websites, potentially making them harder to distinguish?
