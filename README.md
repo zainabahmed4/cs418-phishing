@@ -1,7 +1,8 @@
 ## Main Findings (Narrative Analysis)
 
 - In the UCI Phishing Websites dataset, 14.31% of phishing sites and 91.44% of legitimate sites fell into SSL category `1`.
-- In the UCI Phishing Websites dataset, 16.54% of phishing sites and 52.95% of legitimate sites had subdomain characteristics categorized as legitimate-looking.
+- In the UCI Phishing Websites dataset, 16.54% of phishing sites and 52.95% of legitimate sites had subdomain characteristics categorized as legitimate-looking.  
+- - In the PhiUSIIL dataset, phishing URLs had a median special-character ratio of 0.080 compared with 0.042 for legitimate URLs, and the difference remained when URLs were compared within similar length groups.
 
 ### Some phishing sites share the SSL category common among legitimate sites
 
@@ -15,7 +16,16 @@ I found that 810 of 4,898 phishing sites (16.54%) and 3,260 of 6,157 legitimate 
 
 ![Share of phishing and legitimate sites with legitimate-looking subdomain characteristics, overall and by URL-length category](figures/subdomain_comparison.png)
 
+
+### Phishing URLs have higher special-character ratios within URL-length groups
+
+In the PhiUSIIL dataset, phishing URLs had a median special-character ratio of 0.080 compared with 0.042 for legitimate URLs. One possible explanation was that phishing URLs also tend to be longer, so we repeated the comparison within similar URL-length groups. The difference was small among short URLs, with medians of 0.050 for phishing and 0.045 for legitimate URLs, but became larger among medium URLs (0.077 vs. 0.036) and long URLs (0.101 vs. 0.024). The 95% bootstrap confidence intervals were extremely narrow for most groups because of the large sample sizes; for the long phishing group, the interval was approximately 0.100 to 0.102. This suggests that URL length alone does not explain the higher special-character ratios among phishing URLs. However, the long-URL comparison should be interpreted cautiously because it has 36,066 phishing URLs but only 798 legitimate URLs. The groups also overlap, so special-character ratio by itself can't determine whether a URL is phishing.
+
+![Median special-character ratio for phishing and legitimate URLs overall and within URL-length groups](figures/phiusiil-special-character-ratio.png)
+
 [See the analysis code in narrative.ipynb](notebooks/narrative.ipynb)
+
+
 
 # CS 418 Research Project
 
