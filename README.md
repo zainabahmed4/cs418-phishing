@@ -2,7 +2,7 @@
 
 - In the UCI Phishing Websites dataset, 14.31% of phishing sites and 91.44% of legitimate sites fell into SSL category `1`.
 - In the UCI Phishing Websites dataset, 16.54% of phishing sites and 52.95% of legitimate sites had subdomain characteristics categorized as legitimate-looking.  
-- - In the PhiUSIIL dataset, phishing URLs had a median special-character ratio of 0.080 compared with 0.042 for legitimate URLs, and the difference remained when URLs were compared within similar length groups.
+- In the PhiUSIIL dataset, phishing URLs had a median special-character ratio of 0.080 compared with 0.042 for legitimate URLs, and the difference remained when URLs were compared within similar length groups.
 
 ### Some phishing sites share the SSL category common among legitimate sites
 
