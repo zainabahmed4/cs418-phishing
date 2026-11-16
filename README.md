@@ -1,12 +1,19 @@
 ## Main Findings (Narrative Analysis)
 
 - In the UCI Phishing Websites dataset, 14.31% of phishing sites and 91.44% of legitimate sites fell into SSL category `1`.
+- In the UCI Phishing Websites dataset, 16.54% of phishing sites and 52.95% of legitimate sites had subdomain characteristics categorized as legitimate-looking.
 
 ### Some phishing sites share the SSL category common among legitimate sites
 
 We compared the share of sites in SSL category `1` within each website label. In this dataset, 701 of 4,898 phishing sites (14.31%) and 5,630 of 6,157 legitimate sites (91.44%) fell into that category. To check whether differences in URL length could explain the overall gap, we repeated the comparison within each of the three URL-length categories. The gap persisted in every category, with rates ranging from 12.36% to 16.87% for phishing sites and from 90.60% to 100% for legitimate sites. The 100% rate came from a group of only 52 legitimate sites, so it should be interpreted with caution. SSL category `1` was much more common among legitimate sites, yet some phishing sites shared it across all three URL-length categories.
 
 ![Share of phishing and legitimate sites in SSL category 1, overall and by URL-length category](figures/uci327-ssl-by-url-length.png)
+
+### Legitimate-looking subdomains appear in both groups, but more often among legitimate sites
+
+I found that 810 of 4,898 phishing sites (16.54%) and 3,260 of 6,157 legitimate sites (52.95%) were in the legitimate-looking subdomain category. I checked the same comparison within each of the dataset's three URL-length categories, and the pattern held in all of them: the phishing shares ranged from 10.84% to 16.72%, while the legitimate shares ranged from 48.08% to 53.47%. This sugests that a legitimate-looking subdomain is shared by both groups, but it's much more common among legitimate sites in this sample. URL length does not explain away the overall pattern, although the `URL_Length = 0` subgroup is small, with 83 phishing and 52 legitimate sites, so its 95% confidence intervals are wider and that subgroup estimate is less precise. These are publisher-defined categories rather than raw subdomain counts, which limits how specifically I can interpret the underlying URL structure.
+
+![Share of phishing and legitimate sites with legitimate-looking subdomain characteristics, overall and by URL-length category](figures/subdomain_comparison.png)
 
 [See the analysis code in narrative.ipynb](notebooks/narrative.ipynb)
 
