@@ -3,6 +3,7 @@
 - In the UCI Phishing Websites dataset, 14.31% of phishing sites and 91.44% of legitimate sites fell into SSL category `1`.
 - In the UCI Phishing Websites dataset, 16.54% of phishing sites and 52.95% of legitimate sites had subdomain characteristics categorized as legitimate-looking.  
 - In the PhiUSIIL dataset, phishing URLs had a median special-character ratio of 0.080 compared with 0.042 for legitimate URLs, and the difference remained when URLs were compared within similar length groups.
+- In the PhiUSIIL dataset, password fields were more common on legitimate pages overall (13.85% vs. 5.39%), but among pages with 101 to 500 lines of code, they were more common on phishing pages (17.16% vs 3.78%).
 
 ### Some phishing sites share the SSL category common among legitimate sites
 
@@ -25,6 +26,13 @@ In the PhiUSIIL dataset, phishing URLs had a median special-character ratio of 0
 
 [See the analysis code in narrative.ipynb](notebooks/narrative.ipynb)
 
+### Password fields are more common on phishing pages within similar webpage-size groups
+
+In the PhiUSIIL dataset, password fields appeared on 13.85% of legitimate pages compared with 5.39% of phishing pages. One possible explanation was that legitimate pages generally had more recorded lines of code, so we repeated the comparison within webpage-size groups. Among pages with 101 to 500 lines, the pattern reversed: 17.16% of phishing pages had password fields compared with 3.78% of legitimate pages. The 95% Wilson confidence intervals were 16.67–17.66% for phishing pages and 3.55–4.03% for legitimate pages. These narrow intervals suggest that the percentages are estimated precisely within this sample. Phishing pages also had higher rates in the 501 to 2,000 and 2,001 to 10,000 groups. This direction remained when we restricted the analysis to HTTPS pages and when we kept one row per URL. These results show that both classes share password fields, but their relationship with classification differs depending on webpage size. However, line count is not the best measure of webpage size, and the confidence intervals assume independent observations without accounting for collection bias. We excluded pages with 100 lines or fewer because there were no legitimate examples, and pages above 10,000 lines because there were only four phishing examples. These associations do not establish what causes the pattern or whether password fields fool people.
+
+![Password fields are more common on phishing pages within similar webpage-size groups](figures/password-fields-by-webpage-size.png)
+
+[See the analysis code in narrative_password_fields.ipynb](notebooks/narrative_password_fields.ipynb)
 
 
 # CS 418 Research Project
